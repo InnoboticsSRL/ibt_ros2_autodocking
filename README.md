@@ -249,7 +249,7 @@ Contributions are welcome\! If you find bugs, have suggestions for improvements,
 
 ## 📄 License
 
-This project is released under the Apache 2.0 License. You can find the full text of the license in the [LICENSE](https://www.google.com/search?q=LICENSE) file in the root of this repository.
+This project is released under the Apache 2.0 License. You can find the full text of the license in the [LICENSE]([https://www.google.com/search?q=LICENSE](https://github.com/Vor7reX/ibt_ros2_autodocking/edit/main/LICENSE)) file in the root of this repository.
 
 ```
 ```
