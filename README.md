@@ -169,14 +169,14 @@ Once the server is running, you can send commands using the client from another 
 ## ⚙️ Node Parameters
 
 The `DockingActionServer` exposes numerous parameters that can be configured via a ROS 2 launch YAML file to adapt to your specific setup, allowing fine-tuning of the navigation and alignment phases.
-
+--------------------------------------------------------------------------------------------------------------------------------------
 | Parameter                      | Type   | Default | Description                                                                    |
 | :----------------------------- | :----- | :------ | :----------------------------------------------------------------------------- |
 | `phase0_goal_x`                | double | 0.13    | X coordinate of the initial Nav2 goal in Phase 0.                              |
 | `phase0_goal_y`                | double | 0.87    | Y coordinate of the initial Nav2 goal in Phase 0.                              |
 | `phase0_kp_correction`         | double | 0.5     | Proportional gain for odometric corrections in Phase 0.                        |
 | `phase0_max_correction_vel`    | double | 0.05    | Maximum velocity for odometric corrections in Phase 0 (m/s).                   |
-| `phase0_pose_correction_tolerance` | double | 0.005 | Tolerance for pose corrections in Phase 0 (m).                                 |
+| `phase0_pose_correction`       | double | 0.005 | Tolerance for pose corrections in Phase 0 (m).                                   | 
 | `target_marker_id`             | int    | 10      | ID of the target ArUco marker on the docking station.                          |
 | `marker_size`                  | double | 0.10    | Physical size of the ArUco marker's side (meters).                             |
 | `goal_offset_z`                | double | 0.99    | Z offset from the marker for the robot's final pose (meters).                  |
@@ -187,13 +187,13 @@ The `DockingActionServer` exposes numerous parameters that can be configured via
 | `pose_correction_tolerance`    | double | 0.005   | Tolerance for ArUco pose corrections (m).                                      |
 | `kp_yaw_correction`            | double | 1.0     | Proportional gain for yaw corrections based on ArUco.                          |
 | `max_angular_vel`              | double | 0.25    | Maximum angular velocity for ArUco corrections (rad/s).                        |
-| `yaw_correction_tolerance`     | double | 0.017   | Tolerance for ArUco yaw corrections (radians, \~1 degree).                      |
+| `yaw_correction_tolerance`     | double | 0.017   | Tolerance for ArUco yaw corrections (radians, \~1 degree).                     |
 | `min_angular_vel`              | double | 0.05    | Minimum angular velocity for yaw corrections (rad/s).                          |
 | `strafe_speed`                 | double | -0.05   | Lateral velocity for the final strafe movement (m/s).                          |
 | `final_strafe_offset`          | double | 0.05    | Distance offset for the final strafe, relative to the marker's pose (m).       |
 | `undocking_distance`           | double | 0.50    | Distance traveled backward during undocking (meters).                          |
 | `charge_verification_timeout`  | double | 20.0    | Timeout for charge status verification (seconds).                              |
-
+--------------------------------------------------------------------------------------------------------------------------------------
 -----
 
 ## 📝 Example Launch File
