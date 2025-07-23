@@ -75,8 +75,9 @@ class DockingActionServer(Node):
         # without modifying the source code.
 
         # Parameters for Phase 0 (initial approach with Nav2).
-        self.declare_parameter('phase0_goal_x', 0.13)
-        self.declare_parameter('phase0_goal_y', 0.87)
+        self.declare_parameter('phase0_goal_x', 0.13) # X coordinate of the pre-docking goal in meters.
+        self.declare_parameter('phase0_goal_y', 0.87) # Y coordinate of the pre-docking goal in meters.
+        self.declare_parameter('phase0_goal_yaw_degrees', 0.0) # Yaw angle of the pre-docking goal in degrees (0.0 means no rotation).
         self.declare_parameter('phase0_kp_correction', 0.5) # Proportional gain for odometric correction.
         self.declare_parameter('phase0_max_correction_vel', 0.05) # Maximum velocity for odometric corrections.
         self.declare_parameter('phase0_pose_correction_tolerance', 0.005) # Tolerance for odometric corrections.
@@ -106,6 +107,7 @@ class DockingActionServer(Node):
         # Assigning parameter values to class variables.
         self.phase0_goal_x = self.get_parameter('phase0_goal_x').get_parameter_value().double_value
         self.phase0_goal_y = self.get_parameter('phase0_goal_y').get_parameter_value().double_value
+        self.phase0_goal_yaw_degrees = self.get_parameter('phase0_goal_yaw_degrees').get_parameter_value().double_value
         self.phase0_kp_correction = self.get_parameter('phase0_kp_correction').get_parameter_value().double_value
         self.phase0_max_correction_vel = self.get_parameter('phase0_max_correction_vel').get_parameter_value().double_value
         self.phase0_pose_correction_tolerance = self.get_parameter('phase0_pose_correction_tolerance').get_parameter_value().double_value
@@ -423,7 +425,12 @@ class DockingActionServer(Node):
         goal_pose.header.frame_id = 'map' # The goal is in the 'map' frame.
         goal_pose.pose.position.x = self.phase0_goal_x
         goal_pose.pose.position.y = self.phase0_goal_y
-        goal_pose.pose.orientation.w = 1.0 # Neutral orientation (no rotation on Z-axis).
+         # Converte l'angolo di yaw da gradi a radianti
+        yaw_rad = math.radians(self.phase0_goal_yaw_degrees)
+        # Converte l'angolo di yaw in un quaternione (pitch e roll a 0)
+        q = tf_transformations.quaternion_from_euler(0.0, 0.0, yaw_rad)
+        # Assegna il quaternione al goal_pose
+        goal_pose.pose.orientation = Quaternion(x=q[0], y=q[1], z=q[2], w=q[3])
         self.phase0_target_pose = goal_pose # Saves the target for subsequent corrections.
         
         self.log_and_publish_feedback(f"PHASE 0: Sending pre-docking goal to Nav2: X={self.phase0_goal_x}, Y={self.phase0_goal_y}")
