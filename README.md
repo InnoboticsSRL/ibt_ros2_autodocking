@@ -4,7 +4,7 @@
 
 ## 🎯 Overview
 
-`ibt_ros2_autodocking` is a **ROS 2** package designed to automate the **docking and undocking** procedures for a mobile robot. It implements a robust and precise solution that combines high-level navigation provided by **Nav2** with fine alignment based on vision and **ArUco marker** detection. The package includes both an **Action Server** to manage the multi-phase docking logic and an **Action Client** to request and monitor these operations.
+`ibt_ros2_autodocking` is a **ROS 2** package designed to automate the **docking and undocking** procedures for a mobile robot AMR. It implements a robust and precise solution that combines high-level navigation provided by **Nav2** with fine alignment based on vision and **ArUco marker** detection. The package includes both an **Action Server** to manage the multi-phase docking logic and an **Action Client** to request and monitor these operations.
 
 ---
 
@@ -28,17 +28,17 @@ The `ibt_ros2_autodocking` package is organized as follows:
 
 ibt\_ros2\_autodocking/
 │  
-├── ibt\_ros2\_autodocking/       \# Folder containing the package's Python source code
-│   ├── **init**.py             \# File indicating that the directory is a Python module
-│   ├── docking\_server\_node.py  \# The Action Server node for docking/undocking logic
-│   └── docking\_client\_node.py  \# The Action Client node for interacting with the server
-├── resource/                   \# Folder for resource files (required by ament\_python)
-│   └── ibt\_ros2\_autodocking    \# Specific resource file for the package
-├── .gitignore                  \# File to specify items to ignore in version control (Git)
-├── package.xml                 \# The ROS 2 package manifest (metadata and dependencies)
-├── setup.py                    \# Python build and installation script (used by setuptools/colcon)
-├── setup.cfg                   \# Configuration file for setuptools
-└── README.md                   \# This documentation file
+├── ibt\_ros2\_autodocking/         \# Folder containing the package's Python source code
+│   ├── **init**.py                 \# File indicating that the directory is a Python module
+│   ├── docking\_server\_node.py    \# The Action Server node for docking/undocking logic
+│   └── docking\_client\_node.py    \# The Action Client node for interacting with the server
+├── resource/                       \# Folder for resource files (required by ament\_python)
+│   └── ibt\_ros2\_autodocking      \# Specific resource file for the package
+├── .gitignore                      \# File to specify items to ignore in version control (Git)
+├── package.xml                     \# The ROS 2 package manifest (metadata and dependencies)
+├── setup.py                        \# Python build and installation script (used by setuptools/colcon)
+├── setup.cfg                       \# Configuration file for setuptools
+└── README.md                       \# This documentation file
 
 ````
 
@@ -50,15 +50,15 @@ This package requires a **ROS 2 Humble** (or newer) environment and the followin
 
 ### ROS 2 Packages
 
-* [`rclpy`](https://docs.ros.org/en/humble/Concepts/About-Client-Libraries.html#rclpy-python-client-library)
-* [`rclpy_action`](https://docs.ros.org/en/humble/Concepts/About-Client-Libraries.html#action-clients-and-servers)
-* [`sensor_msgs`](https://docs.ros.org/en/humble/Concepts/About-ROS-2-Interfaces.html#common-interfaces-and-messages)
-* [`geometry_msgs`](https://docs.ros.org/en/humble/Concepts/About-ROS-2-Interfaces.html#common-interfaces-and-messages)
-* [`nav2_msgs`](https://navigation.ros.org/package_references/nav2_msgs.html)
-* [`cv_bridge`](https://wiki.ros.org/cv_bridge)
-* [`tf2_ros`](https://docs.ros.org/en/humble/Tutorials/Intermediate/Tf2/Tf2-Python.html)
-* [`tf2_geometry_msgs`](https://docs.ros.org/en/humble/Tutorials/Intermediate/Tf2/Tf2-Python.html)
-* [`ibt_ros2_interfaces`](https://github.com/YourOrg/ibt_ros2_interfaces) (your custom action definitions package)
+* [`rclpy`](https://docs.ros.org/en/iron/p/rclpy/)
+* [`rclpy_action`](https://docs.ros.org/en/iron/p/rclpy/rclpy.action.client.html)
+* [`sensor_msgs`](https://docs.ros2.org/foxy/api/sensor_msgs/index-msg.html)
+* [`geometry_msgs`](https://docs.ros.org/en/noetic/api/geometry_msgs/html/index-msg.html)
+* [`nav2_msgs`](https://index.ros.org/p/nav2_msgs/)
+* [`cv_bridge`](http://wiki.ros.org/cv_bridge)
+* [`tf2_ros`](https://docs.ros2.org/foxy/api/tf2_ros/index.html)
+* [`tf2_geometry_msgs`](http://wiki.ros.org/tf2_geometry_msgs)
+* [`ibt_ros2_interfaces`](https://github.com/Vor7reX/ibt_ros2_interfaces.git) (custom action definitions package)
 
 ### Python Libraries (installable via `pip`)
 
@@ -109,8 +109,8 @@ To compile and install the package in your ROS 2 workspace:
 
 2.  **Clone the necessary repositories** (if you haven't already. Ensure `ibt_ros2_interfaces` is in the same workspace):
     ```bash
-    # git clone <URL_of_your_autodocking_repo> src/ibt_ros2_autodocking
-    # git clone <URL_of_your_interfaces_repo> src/ibt_ros2_interfaces
+    # git clone https://github.com/Vor7reX/ibt_ros2_autodocking.git
+    # git clone https://github.com/Vor7reX/ibt_ros2_interfaces.git
     ```
 
 3.  **Build the workspace** with `colcon`:
@@ -176,7 +176,7 @@ The `DockingActionServer` exposes numerous parameters that can be configured via
 | `phase0_goal_y`                | double | 0.87    | Y coordinate of the initial Nav2 goal in Phase 0.                              |
 | `phase0_kp_correction`         | double | 0.5     | Proportional gain for odometric corrections in Phase 0.                        |
 | `phase0_max_correction_vel`    | double | 0.05    | Maximum velocity for odometric corrections in Phase 0 (m/s).                   |
-| `phase0_pose_correction`       | double | 0.005 | Tolerance for pose corrections in Phase 0 (m).                                   | 
+| `phase0_pose_correction`       | double | 0.005   | Tolerance for pose corrections in Phase 0 (m).                                 | 
 | `target_marker_id`             | int    | 10      | ID of the target ArUco marker on the docking station.                          |
 | `marker_size`                  | double | 0.10    | Physical size of the ArUco marker's side (meters).                             |
 | `goal_offset_z`                | double | 0.99    | Z offset from the marker for the robot's final pose (meters).                  |
