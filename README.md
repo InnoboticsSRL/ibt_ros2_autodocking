@@ -1,6 +1,12 @@
 # 🤖 `ibt_ros2_autodocking`
-![Python](https://img.shields.io/badge/Python-3.13-blue.svg)
 
+<div align="center">
+  
+ ![Python](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)
+ ![C++](https://img.shields.io/badge/C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)
+ ![ROS2](https://img.shields.io/badge/ROS2-22314E?style=for-the-badge&logo=ROS&logoColor=white)
+ 
+</div>
 
 ![Simulation Demo](Simulation.JPG)
 
