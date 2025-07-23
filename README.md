@@ -246,7 +246,7 @@ def generate_launch_description():
 
 ## 🤝 Contribution
 
-Contributions are welcome\! If you find bugs, have suggestions for improvements, or wish to add new features, feel free to open an [issue](https://www.google.com/search?q=https://github.com/YourOrg/ibt_ros2_autodocking/issues) or a [pull request](https://www.google.com/search?q=https://github.com/YourOrg/ibt_ros2_autodocking/pulls).
+Contributions are welcome\! If you find bugs, have suggestions for improvements, or wish to add new features, feel free to open an [issue](https://github.com/Vor7reX/ibt_ros2_autodocking/issues) or a [pull request](https://github.com/Vor7reX/ibt_ros2_autodocking/pulls).
 
 -----
 
